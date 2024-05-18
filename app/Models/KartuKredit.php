@@ -12,4 +12,5 @@ class KartuKredit extends Model
     protected $table = "kartukredit";
 
     protected $guarded = [];
+    public $timestamps = false;
 }

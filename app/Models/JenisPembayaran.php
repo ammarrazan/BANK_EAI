@@ -12,4 +12,5 @@ class JenisPembayaran extends Model
     protected $table = "jenispembayaran";
 
     protected $guarded = [];
+    public $timestamps = false;
 }

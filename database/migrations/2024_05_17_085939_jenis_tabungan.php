@@ -15,7 +15,7 @@ return new class extends Migration {
         Schema::create('jenisTabungan', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->integer('expired');
+            $table->integer('expired')->nullable();
             $table->string('deskripsi');
         });
     }

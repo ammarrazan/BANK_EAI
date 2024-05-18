@@ -12,4 +12,6 @@ class JenisNasabah extends Model
     protected $table = "jenisnasabah";
 
     protected $guarded = [];
+
+    public $timestamps = false;
 }

@@ -12,4 +12,5 @@ class JenisTabungan extends Model
     protected $table = "jenistabungan";
 
     protected $guarded = [];
+    public $timestamps = false;
 }
