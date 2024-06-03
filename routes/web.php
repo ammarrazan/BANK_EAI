@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ObjWisata;
+// use App\Http\Controllers\Api\ObjWisataControllerisata;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProviderController;
 
@@ -24,3 +26,8 @@ Route::get('/tabungan/{id}', [ProviderController::class, 'getJenisTabungan']);
 
 Route::get('/kartu-kredit', [ProviderController::class, 'getAllJenisKartuKredit']);
 Route::get('/kartu-kredit/{id}', [ProviderController::class, 'getJenisKartuKredit']);
+
+// ==================OBJ WISATA================
+Route::get('/wisata', [ObjWisata::class, 'index']);
+// Route::post('/wisata/addRekening', [ObjWisataControllerisata::class, 'addRekening']);
+
