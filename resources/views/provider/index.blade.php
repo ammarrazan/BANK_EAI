@@ -48,6 +48,53 @@
                 <h3 class="text-lg font-semibold mt-3">Detail Data Kartu Kredit</h3>
                 <p class="text-sm">API : GET /kartu-kredit/{id}</p>
             </div>
+          
+            <div class="w-full md:w-3/4 m-auto bg-white border-gray-500   rounded-lg shadow-lg shadow-gray-400 text-center p-4 md:p-0">
+                <h3 class="text-xl font-bold">OBJECT WISATA</h3>
+                <hr class="border-1 border-gray-500 my-2">
+            <div class="space-y-3">
+                <div>
+                    <h3 class="text-lg font-semibold ">Tampil Seluruh Akun Bank</h3>
+                    <p class="text-sm">API : GET /api/obj-wisata</p>
+                </div>
+            <div>
+                <h3 class="text-lg font-semibold ">Tampil Detail Akun Bank</h3>
+                <p class="text-sm">API : GET /api/obj-wisata</p>
+            </div>
+               
+                
+                <div>
+                    <h3 class="text-lg font-semibold ">Buat Akun Bank</h3>
+                    <p class="text-sm">API : POST /api/obj-wisata</p>
+                    <ul>
+                        <li>DATA Yang <span class="font-bold">dibutuhkan :</span></li>
+                        <li>id_wisata ex : "OP01"</li>
+                        <li>nama_objek ex : "North Point"</li>
+                        <li>harga_tiket : "100000"</li>
+                        <li>saldo : "100000"</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold ">Update Akun Bank</h3>
+                    <p class="text-sm">API : Update /api/obj-wisata/{rekening(id)}</p>
+                    <ul>
+                        <li>DATA Yang <span class="font-bold">dibutuhkan :</span></li>
+                        <li>id_wisata ex : "OP01"</li>
+                        <li>nama_objek ex : "North Point"</li>
+                        <li>harga_tiket : "100000"</li>
+                        <li>saldo : "100000"</li>
+                    </ul>
+                </div>
+              
+                <div>
+                    <h3 class="text-lg font-semibold ">Hapus Akun Bank</h3>
+                    <p class="text-sm">API : Update /api/obj-wisata/{rekening(id)}</p>
+                </div>
+            </div>
+               
+            </div>
+
         </div>
     </div>
 </body>

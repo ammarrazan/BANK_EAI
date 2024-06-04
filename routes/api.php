@@ -11,3 +11,5 @@ Route::get('/user', function (Request $request) {
 
 Route::apiResource('/obj-wisata', ObjWisataController::class);
 // Route::post('/obj-wisata', [ObjWisataController::class, 'store']);
+
+Route::post("/obj-wisata", [ObjWisataController::class, "store"]);
