@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Api\hotelController;
+use App\Http\Controllers\Api\rentalController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\ObjWisataController;
@@ -10,6 +12,5 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 Route::apiResource('/obj-wisata', ObjWisataController::class);
-// Route::post('/obj-wisata', [ObjWisataController::class, 'store']);
-
-Route::post("/obj-wisata", [ObjWisataController::class, "store"]);
+Route::apiResource('/hotel',hotelController::class);
+Route::apiResource('/RentalMobil',rentalController::class);
