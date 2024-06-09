@@ -196,4 +196,65 @@ class ObjWisataController extends Controller
             );
         }
     }
+
+    public function getFetch(){
+        try {
+            $response = Http::get('https://pajakobjekwisata.onrender.com/wisata');
+    
+            if ($response->successful()) {
+                // Decode the JSON response to a PHP array
+                $data = $response->json();
+                $extractedData = [];
+                if (is_array($data) && !empty($data)) {
+                    foreach ($data as $item) {
+                        if (is_array($item) && isset($item['id_wisata'], $item['nama_objek'], $item['harga_tiket'])) {
+                            $extractedData[] = [
+                                'id_wisata' => $item['id_wisata'],
+                                'nama_objek' => $item['nama_objek'],
+                                'harga_tiket' => $item['harga_tiket']
+                            ];
+                        }
+                    }
+                } else {
+                    return ['error' => 'Unexpected data structure or empty response.'];
+                }
+                if (empty($extractedData)) {
+                    return ['error' => 'No matching data found.'];
+                }
+    
+                return $extractedData;
+            } else {
+                return ['error' => 'Failed to fetch data. Status code: ' . $response->status()];
+            }
+        } catch (\Exception $e) {
+            return ['error' => 'An error occurred: ' . $e->getMessage()];
+        }
+    }
+
+    public function getFetchDetail($id){
+        try {
+            $response = Http::get('https://pajakobjekwisata.onrender.com/wisata/' . $id);
+    
+            if ($response->successful()) {
+                $data = $response->json();
+    
+                if (is_array($data) && isset($data['id_wisata'], $data['nama_objek'], $data['harga_tiket'])) {
+                    
+                    $extractedData = [
+                        'id_wisata' => $data['id_wisata'],
+                        'nama_objek' => $data['nama_objek'],
+                        'harga_tiket' => $data['harga_tiket']
+                    ];
+    
+                    return $extractedData;
+                } else {
+                    return ['error' => 'Required keys not found in response.'];
+                }
+            } else {
+                return ['error' => 'Failed to fetch data. Status code: ' . $response->status()];
+            }
+        } catch (\Exception $e) {
+            return ['error' => 'An error occurred: ' . $e->getMessage()];
+        }
+    }
 }
