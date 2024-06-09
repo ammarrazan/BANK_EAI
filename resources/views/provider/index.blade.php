@@ -50,6 +50,16 @@
             </div>
 
             <div class="bg-white border-gray-500 h-auto rounded-lg shadow-lg shadow-gray-400 text-center p-4">
+                <h3 class="text-xl font-bold">Data Nasabah</h3>
+                <hr class="border-1 border-gray-500 my-2">
+                <h3 class="text-lg font-semibold mt-3">List Data Nasabah</h3>
+                <p class="text-sm">API : GET /DataNasabah</p>
+                <h3 class="text-lg font-semibold mt-3">Detail Rekening Nasabah</h3>
+                <p class="text-sm">API : GET /DataNasabah/{id}</p>
+            </div>
+            
+
+            <div class="bg-white border-gray-500 h-auto rounded-lg shadow-lg shadow-gray-400 text-center p-4">
                 <h3 class="text-xl font-bold">OBJECT WISATA</h3>
                 <hr class="border-1 border-gray-500 my-2">
                 <div class="space-y-3">
