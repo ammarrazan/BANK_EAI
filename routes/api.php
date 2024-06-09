@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\DataNasabahController;
 use App\Http\Controllers\Api\hotelController;
 use App\Http\Controllers\Api\rentalController;
 use Illuminate\Http\Request;
@@ -18,4 +19,5 @@ Route::get("/fetch/{id}/obj-wisata", [ObjWisataController::class, 'getFetchDetai
 Route::apiResource('/biro-tour', BiroTourController::class);
 Route::apiResource('/hotel',hotelController::class);
 Route::apiResource('/RentalMobil',rentalController::class);
+Route::apiResource('/DataNasabah',DataNasabahController::class);
 Route::apiResource('/asuransi',asuransiController::class);
