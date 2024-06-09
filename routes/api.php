@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\DataNasabahController;
 use App\Http\Controllers\Api\hotelController;
 use App\Http\Controllers\Api\rentalController;
 use Illuminate\Http\Request;
@@ -13,3 +14,4 @@ Route::get('/user', function (Request $request) {
 Route::apiResource('/obj-wisata', ObjWisataController::class);
 Route::apiResource('/hotel',hotelController::class);
 Route::apiResource('/RentalMobil',rentalController::class);
+Route::apiResource('/DataNasabah',DataNasabahController::class);
