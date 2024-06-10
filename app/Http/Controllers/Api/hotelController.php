@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\hotel;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -46,7 +47,8 @@ class hotelController extends Controller
             'jenis'=>'required|min:3',
             'name'=>'required|min:3',
             'total'=>'required|min:3',
-            'saldo'=>'required|min:3'
+            'saldo'=>'required|min:3',
+            'paymentStatus'=>'required'
         ]);
         if ($validator->fails()){
             return response()->json($validator->errors(), 422);
@@ -65,7 +67,8 @@ class hotelController extends Controller
             'jenis'=>$request->jenis,
             'name'=>$request->name,
             'total'=>$request->total,
-            'saldo'=>$request->saldo
+            'saldo'=>$request->saldo,
+            'paymentStatus'=>$request->payementStatus
         ]);
         if ($data) {
             return response()->json(
@@ -130,7 +133,9 @@ class hotelController extends Controller
             'jenis'=>'required|min:3',
             'name'=>'required|min:3',
             'total'=>'required',
-            'saldo'=>'required'
+            'saldo'=>'required',
+            'paymentStatus'=>'required'
+            
         ]);
         if ($validator->fails()){
             return response()->json($validator->errors(), 422);
