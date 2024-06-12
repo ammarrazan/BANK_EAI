@@ -125,20 +125,14 @@ class rentalController extends Controller
     public function update(Request $request, string $id)
     {
         $validator = Validator::make($request->all(), [
-            'rekening'=>'required|min:3',
-            'jenisTabungan'=>'required|min:3',
-            'nominal'=>'required|min:3',
-            'nama'=>'required|min:3',
+            'nominal'=>'required',
             'saldo'=>'required'
         ]);
         if ($validator->fails()){
             return response()->json($validator->errors(), 422);
         }
         $data=RentalMobil::find($id);
-        $data->rekening=$request->rekening;
-        $data->jenisTabungan=$request->jenisTabungan;
         $data->nominal=$request->nominal;
-        $data->nama=$request->nama;
         $data->saldo=$request->saldo;
         $data->save();
 
@@ -167,27 +161,23 @@ class rentalController extends Controller
      */
     public function destroy(string $id)
     {
-        $data=RentalMobil::where('id',$id)
-        ->orWhere('name','like','%'.$id.'%')
-        ->get();
-
-        if ($data->count() > 0) {
+        $data = RentalMobil::where('id', $id)->delete();
+        if ($data) {
             return response()->json(
                 [
                     'status' => true,
-                    'message' => 'data pembayaran customer rental mobil',
-                    'data' => $data,
+                    'message' => 'Data Deleted',
                 ],
-                200,
+                202,
             );
         } else {
             return response()->json(
                 [
                     'status' => false,
-                    'message' => 'data not found',
+                    'message' => 'Data Not Deleted',
                 ],
-                404,
+                500,
             );
         }
     }
-}
+    };

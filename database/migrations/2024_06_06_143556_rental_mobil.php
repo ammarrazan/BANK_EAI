@@ -13,12 +13,14 @@ return new class extends Migration
     {
         Schema::create('RentalMobil',function (Blueprint $table) {
             $table->id ();
-            $table->integer('rekening');
+            $table->string('IDpembayaran');
+            $table->integer('IDPenyewaan');
             $table->string('jenisKartuKredit');
-            $table->string ('jenisTabungan');
             $table->float('nominal');
             $table->string('nama');
             $table->float('saldo');
+            $table->date('tanggalPembayaran');
+            $table->string('statusPembayaran');
 
         });
     }
