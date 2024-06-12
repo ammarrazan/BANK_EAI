@@ -42,12 +42,14 @@ class rentalController extends Controller
     {
         $validator=Validator::make($request->all(),[
             'id'=>'required|min:3',
-            'rekening'=>'required|min:3',
+            'IDpembayaran'=>'required|min:3',
+            'IDPenyewaan'=>'required|min:3',
             'jenisKartuKredit'=>"",
-            'jenisTabungan'=>'required|min:3',
             'nominal'=>'required|min:3',
             'nama'=>'required|min:3',
-            'saldo'=>'required'
+            'saldo'=>'required',
+            'tanggalPembayaran'=>'required|min:3',
+            'statusPembayaran'=>'required|min:3'
         ]);
         if ($validator->fails()){
             return response()->json($validator->errors(), 422);
@@ -63,12 +65,14 @@ class rentalController extends Controller
         }
         $data = RentalMobil::create([
             'id'=>$request->id,
-            'rekening'=>$request->rekening,
+            'IDpembayaran'=>$request->IDembayaran,
+            'IDPenyewaan'=>$request->IDpenyewaan,
             'jenisKartuKredit'=>$request->jenisKartuKredit,
-            'janisTabungan'=>$request->jenisTabungan,
             'nominal'=>$request->nominal,
             'nama'=>$request->nama,
-            'saldo'=>$request->saldo
+            'saldo'=>$request->saldo,
+            'tanggalPembayaran'=>$request->tanggalPembayaran,
+            'statusPembayaran'=>$request->statusPembayaran
         ]);
         if ($data) {
             return response()->json(
