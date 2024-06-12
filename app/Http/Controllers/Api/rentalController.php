@@ -46,8 +46,6 @@ class rentalController extends Controller
             'IDPenyewaan'=>'required|min:3',
             'jenisKartuKredit'=>"",
             'nominal'=>'required|min:3',
-            'nama'=>'required|min:3',
-            'saldo'=>'required',
             'tanggalPembayaran'=>'required|min:3',
             'statusPembayaran'=>'required|min:3'
         ]);
@@ -69,8 +67,6 @@ class rentalController extends Controller
             'IDPenyewaan'=>$request->IDpenyewaan,
             'jenisKartuKredit'=>$request->jenisKartuKredit,
             'nominal'=>$request->nominal,
-            'nama'=>$request->nama,
-            'saldo'=>$request->saldo,
             'tanggalPembayaran'=>$request->tanggalPembayaran,
             'statusPembayaran'=>$request->statusPembayaran
         ]);

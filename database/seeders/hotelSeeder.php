@@ -19,7 +19,7 @@ class hotelSeeder extends Seeder
             'name'=>'Ale',
             'total'=>1000000,
             'saldo'=>10000000,
-            'paymentStatus'=>'not_paid'
+            'paymentStatus'=>'paid'
 
         ]);
 
@@ -29,7 +29,7 @@ class hotelSeeder extends Seeder
             'name'=>'Leo',
             'total'=>1000000,
             'saldo'=>10000000,
-            'paymentStatus'=>'not_paid'
+            'paymentStatus'=>'paid'
 
         ]);
 
@@ -39,7 +39,7 @@ class hotelSeeder extends Seeder
             'name'=>'Lea',
             'total'=>4000000,
             'saldo'=>40000000,
-            'paymentStatus'=>'not_paid'
+            'paymentStatus'=>'paid'
 
         ]);
         hotel::create([
@@ -48,7 +48,7 @@ class hotelSeeder extends Seeder
             'name'=>'Satoru',
             'total'=>2000000,
             'saldo'=>20000000,
-            'paymentStatus'=>'not_paid'
+            'paymentStatus'=>'paid'
 
         ]);
         hotel::create([
@@ -57,7 +57,7 @@ class hotelSeeder extends Seeder
             'name'=>'Suguru',
             'total'=>6000000,
             'saldo'=>60000000,
-            'paymentStatus'=>'not_paid'
+            'paymentStatus'=>'paid'
 
         ]);
     }

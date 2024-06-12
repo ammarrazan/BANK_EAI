@@ -17,8 +17,6 @@ return new class extends Migration
             $table->integer('IDPenyewaan');
             $table->string('jenisKartuKredit');
             $table->float('nominal');
-            $table->string('nama');
-            $table->float('saldo');
             $table->date('tanggalPembayaran');
             $table->string('statusPembayaran');
 

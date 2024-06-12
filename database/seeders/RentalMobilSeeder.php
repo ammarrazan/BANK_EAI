@@ -19,8 +19,6 @@ class RentalMobilSeeder extends Seeder
             'IDPenyewaan'=>001,
             'jenisKartuKredit'=>"",
             'nominal'=> 1500000,
-            'nama'=>'Ale',
-            'saldo'=>1500000000,
             'tanggalPembayaran'=>'2024-03-25',
             'statusPembayaran'=>'lunas'
         ]);
@@ -30,8 +28,6 @@ class RentalMobilSeeder extends Seeder
             'IDPenyewaan'=>002,
             'jenisKartuKredit'=>"",
             'nominal'=> 640000,
-            'nama'=>'Leo',
-            'saldo'=>1500000000,
             'tanggalPembayaran'=>'2024-04-12',
             'statusPembayaran'=>'BelumLunas'
         ]);
@@ -41,8 +37,6 @@ class RentalMobilSeeder extends Seeder
             'IDPenyewaan'=>003,
             'jenisKartuKredit'=>"Visa",
             'nominal'=> 500000,
-            'nama'=>'Lea',
-            'saldo'=>1500000000,
             'tanggalPembayaran'=>'2024-05-04',
             'statusPembayaran'=>'lunas'
         ]);
@@ -52,8 +46,6 @@ class RentalMobilSeeder extends Seeder
             'IDPenyewaan'=>004,
             'jenisKartuKredit'=>"",
             'nominal'=>1050000,
-            'nama'=>'Satoru',
-            'saldo'=>1500000000,
             'tanggalPembayaran'=>'2024-06-18',
             'statusPembayaran'=>'lunas'
         ]);
@@ -63,8 +55,6 @@ class RentalMobilSeeder extends Seeder
             'IDPenyewaan'=>005,
             'jenisKartuKredit'=>"",
             'nominal'=>2000000,
-            'nama'=>'Suguru',
-            'saldo'=>1500000000,
             'tanggalPembayaran'=>'2024-07-25',
             'statusPembayaran'=>'BelumLunas'
         ]);
