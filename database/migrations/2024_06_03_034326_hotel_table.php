@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('name');
             $table->float ('total');
             $table->float('saldo');
+            $table->string('paymentStatus');
 
         });
     }
