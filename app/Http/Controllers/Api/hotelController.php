@@ -197,5 +197,73 @@ class hotelController extends Controller
         }
     }
 
+    public function getFetch(){
+        try {
+            $response = Http::get('https://hotelbaru.onrender.com/billings');
+    
+            if ($response->successful()) {
+                // Decode the JSON response to a PHP array
+                $data = $response->json();
+                $extractedData = [];
+                if (is_array($data) && !empty($data)) {
+                    foreach ($data as $item) {
+                        if (is_array($item) && isset($item['bill_id'], $item['reservation_id'])) {
+                            $extractedData[] = [
+                                'bill_id' => $item['bill_id'],
+                                'reservation_id' => $item['reservation_id']
+                            ];
+                        }
+                    }
+                } else {
+                    return ['error' => 'Unexpected data structure or empty response.'];
+                }
+                if (empty($extractedData)) {
+                    return ['error' => 'No matching data found.'];
+                }
+    
+                return $extractedData;
+            } else {
+                return ['error' => 'Failed to fetch data. Status code: ' . $response->status()];
+            }
+        } catch (\Exception $e) {
+            return ['error' => 'An error occurred: ' . $e->getMessage()];
+        }
+    }
+
+    public function getFetchDetail($id){
+        try {
+            $response = Http::get('https://hotelbaru.onrender.com/billings/'. $id);
+    
+            if ($response->successful()) {
+                // Decode the JSON response to a PHP array
+                $data = $response->json();
+                $extractedData = [];
+                if (is_array($data) && !empty($data)) {
+                    foreach ($data as $item) {
+                        if (is_array($item) && isset($item['bill_id'], $item['reservation_id'])) {
+                            $extractedData[] = [
+                                'bill_id' => $item['bill_id'],
+                                'reservation_id' => $item['reservation_id']
+                            ];
+                        }
+                    }
+                } else {
+                    return ['error' => 'Unexpected data structure or empty response.'];
+                }
+                if (empty($extractedData)) {
+                    return ['error' => 'No matching data found.'];
+                }
+    
+                return $extractedData;
+            } else {
+                return ['error' => 'Failed to fetch data. Status code: ' . $response->status()];
+            }
+        } catch (\Exception $e) {
+            return ['error' => 'An error occurred: ' . $e->getMessage()];
+        }
+    }
+
+
+
     
 }
