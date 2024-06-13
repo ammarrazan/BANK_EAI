@@ -219,7 +219,7 @@ class rentalController extends Controller
 
     public function getFetchDetail($id){
         try {
-            $response = Http::get('https://rental-mobil-api.onrender.com/pembayaran'. $id);
+            $response = Http::get('https://rental-mobil-api.onrender.com/pembayaran/'. $id);
     
             if ($response->successful()) {
                 // Decode the JSON response to a PHP array
