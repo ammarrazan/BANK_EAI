@@ -66,7 +66,7 @@ class rentalController extends Controller
             'id' => $request->id,
             'IDpembayaran' => $request->IDembayaran,
             'IDPenyewaan' => $request->IDpenyewaan,
-            'metodePembayaran'=>$request->metodePembayaran,
+            'metodePembayaran' => $request->metodePembayaran,
             'jenisKartuKredit' => $request->jenisKartuKredit,
             'nominal' => $request->nominal,
             'tanggalPembayaran' => $request->tanggalPembayaran,
@@ -128,14 +128,14 @@ class rentalController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'nominal' => 'required',
-            'statusPembayaran'=>'required'
+            'statusPembayaran' => 'required',
         ]);
         if ($validator->fails()) {
             return response()->json($validator->errors(), 422);
         }
         $data = RentalMobil::find($id);
         $data->nominal = $request->nominal;
-        $data->statusPembayaran=$request->statusPembayaran;
+        $data->statusPembayaran = $request->statusPembayaran;
         $data->save();
 
         if ($data) {
@@ -182,22 +182,23 @@ class rentalController extends Controller
             );
         }
     }
-    public function getFetch(){
+    public function getFetch()
+    {
         try {
             $response = Http::get('https://rental-mobil-api.onrender.com/pembayaran');
-    
+
             if ($response->successful()) {
                 // Decode the JSON response to a PHP array
                 $data = $response->json();
                 $extractedData = [];
                 if (is_array($data) && !empty($data)) {
                     foreach ($data as $item) {
-                        if (is_array($item) && isset($item['id_pembayaran'], $item['tanggal_pembayaran'],$item['jumlah_pembayaran'],$item['metode_pembayaran'])) {
+                        if (is_array($item) && isset($item['id_pembayaran'], $item['tanggal_pembayaran'], $item['jumlah_pembayaran'], $item['metode_pembayaran'])) {
                             $extractedData[] = [
                                 'id_pembayaran' => $item['id_pembayaran'],
                                 'tanggal_pembayaran' => $item['tanggal_pembayaran'],
-                                'jumlah_pembayaran'=>$item['jumlah_pembayaran'],
-                                'metode_pembayaran'=>$item['metode_pembayaran']
+                                'jumlah_pembayaran' => $item['jumlah_pembayaran'],
+                                'metode_pembayaran' => $item['metode_pembayaran'],
                             ];
                         }
                     }
@@ -207,7 +208,7 @@ class rentalController extends Controller
                 if (empty($extractedData)) {
                     return ['error' => 'No matching data found.'];
                 }
-    
+
                 return $extractedData;
             } else {
                 return ['error' => 'Failed to fetch data. Status code: ' . $response->status()];
@@ -217,33 +218,19 @@ class rentalController extends Controller
         }
     }
 
-    public function getFetchDetail($id){
+    public function getFetchDetail($id)
+    {
         try {
-            $response = Http::get('https://rental-mobil-api.onrender.com/pembayaran/'. $id);
-    
+            $response = Http::get('https://rental-mobil-api.onrender.com/pembayaran/');
+
             if ($response->successful()) {
-                // Decode the JSON response to a PHP array
                 $data = $response->json();
-                $extractedData = [];
-                if (is_array($data) && !empty($data)) {
-                    foreach ($data as $item) {
-                        if (is_array($item) && isset($item['id_pembayaran'], $item['tanggal_pembayaran'],$item['jumlah_pembayaran'],$item['metode_pembayaran'])) {
-                            $extractedData[] = [
-                                'id_pembayaran' => $item['id_pembayaran'],
-                                'tanggal_pembayaran' => $item['tanggal_pembayaran'],
-                                'jumlah_pembayaran'=>$item['jumlah_pembayaran'],
-                                'metode_pembayaran'=>$item['metode_pembayaran']
-                            ];
-                        }
+                foreach ($data as $item) {
+                    if ($item['id_pembayaran'] === $id) {
+                        return $item;
                     }
-                } else {
-                    return ['error' => 'Unexpected data structure or empty response.'];
                 }
-                if (empty($extractedData)) {
-                    return ['error' => 'No matching data found.'];
-                }
-    
-                return $extractedData;
+                return ['error' => 'ID pembayaran tidak ditemukan: ' . $id];
             } else {
                 return ['error' => 'Failed to fetch data. Status code: ' . $response->status()];
             }
