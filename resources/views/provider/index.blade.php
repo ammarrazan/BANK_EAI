@@ -191,6 +191,55 @@
                     </div>
                 </div>
             </div>
+            <div class="bg-white border-gray-500 h-auto rounded-lg shadow-lg shadow-gray-400 text-center p-4">
+                <h3 class="text-xl font-bold">asuransi</h3>
+                <hr class="border-1 border-gray-500 my-2">
+                <div class="space-y-3">
+                    <div>
+                        <h3 class="text-lg font-semibold">Tampil seluruh data pembayaran asuransi</h3>
+                        <p class="text-sm">API : GET /api/asuransi</p>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold">Tampil seluruh data pembayaran asuransi</h3>
+                        <p class="text-sm">API : GET /api/asuransi</p>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold">Buat data pembayaran</h3>
+                        <p class="text-sm">API : POST /api/asuransi</p>
+                        <ul>
+                            <li>DATA Yang <span class="font-bold">dibutuhkan :</span></li>
+                            <li>id ex : "201"</li>
+                            <li>rekening ex :'0211402201' </li>
+                            <li>nama ex : 'Ali'</li>
+                            <li>kategori ex : "kendaraan"</li>
+                            <li>jumlah : "60"</li>
+                            <li>tagihan ex :'100000' </li>
+                            
+
+
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold">Update data pembayaran</h3>
+                        <p class="text-sm">API : Update /api/asuransi/{(id)}</p>
+                        <ul>
+                            <li>DATA Yang <span class="font-bold">dibutuhkan :</span></li>
+                            <li>id ex : "201"</li>
+                            <li>rekening ex :'0211402201' </li>
+                            <li>nama ex : 'Ali'</li>
+                            <li>kategori ex : "kendaraan"</li>
+                            <li>jumlah : "60"</li>
+                            <li>tagihan ex :'100000' </li>
+
+
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold">Hapus data pembayaran</h3>
+                        <p class="text-sm">API : Update /api/asuransi/{(id)}</p>
+                    </div>
+                </div>
+            </div>
             
         </div>
     </div>
