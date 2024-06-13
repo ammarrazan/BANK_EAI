@@ -53,9 +53,20 @@
                 <h3 class="text-xl font-bold">Data Nasabah</h3>
                 <hr class="border-1 border-gray-500 my-2">
                 <h3 class="text-lg font-semibold mt-3">List Data Nasabah</h3>
-                <p class="text-sm">API : GET /DataNasabah</p>
+                <p class="text-sm">API : GET api/DataNasabah</p>
                 <h3 class="text-lg font-semibold mt-3">Detail Rekening Nasabah</h3>
-                <p class="text-sm">API : GET /DataNasabah/{id}</p>
+                <p class="text-sm">API : GET api/DataNasabah/{id}</p>
+                <p class="text-sm">API : POST api/DataNasabah</p>
+                <p class="text-sm">API : POST api/DataNasabah/{id}</p>
+                    <ul>
+                        <li>DATA Yang <span class="font-bold">dibutuhkan :</span></li>
+                        <li>id ex : "101"</li>
+                        <li>norekening ex: "1112021402"</li>
+                        <li>jenisTabungan ex: "Tahapan"</li>
+                        <li>activatedDate ex: "2024-04-24"</li>
+                        <li>expiredDate ex: "2027-04-24"</li>
+                        <li>saldo ex: "100000"</li>
+                    </ul>
             </div>
             
 
