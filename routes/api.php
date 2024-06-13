@@ -14,21 +14,20 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 Route::apiResource('/obj-wisata', ObjWisataController::class);
-Route::get("/fetch/obj-wisata", [ObjWisataController::class, 'getFetch']);
-Route::get("/fetch/{id}/obj-wisata", [ObjWisataController::class, 'getFetchDetail']);
+Route::get('/fetch/obj-wisata', [ObjWisataController::class, 'getFetch']);
+Route::get('/fetch/{id}/obj-wisata', [ObjWisataController::class, 'getFetchDetail']);
 Route::apiResource('/biro-tour', BiroTourController::class);
-Route::get("/fetch/biro-tour", [BiroTourController::class, 'getFetch']);
-Route::get("/fetch/{id}/biro-tour", [BiroTourController::class, 'getFetchDetail']);
-Route::apiResource('/hotel',hotelController::class);
-Route::get("/fetch/hotel", [hotelController::class, 'getFetch']);
-Route::get("/fetch/{id}/hotel", [hotelController::class, 'getFetchDetail']);
-Route::apiResource('/RentalMobil',rentalController::class);
-Route::get("/fetch/RentalMobil", [rentalController::class, 'getFetch']);
-Route::get("/fetch/{id}/RentalMobil", [rentalController::class, 'getFetchDetail']);
-Route::apiResource('/DataNasabah',DataNasabahController::class);
-Route::get("/fetch/dataNasabah", [DataNasabahController::class, 'getFetch']);
-Route::get("/fetch/{id}/dataNasabah", [DataNasabahController::class, 'getFetchDetail']);
-Route::apiResource('/asuransi',asuransiController::class);
-Route::get("/fetch/asuransi", [asuransiController::class, 'getFetch']);
-Route::get("/fetch/{id}/asuransi", [asuransiController::class, 'getFetchDetail']);
-
+Route::get('/fetch/biro-tour', [BiroTourController::class, 'getFetch']);
+Route::get('/fetch/{id}/biro-tour', [BiroTourController::class, 'getFetchDetail']);
+Route::apiResource('/hotel', hotelController::class);
+Route::get('/fetch/hotel', [hotelController::class, 'getFetch']);
+Route::get('/fetch/{id}/hotel', [hotelController::class, 'getFetchDetail']);
+Route::apiResource('/RentalMobil', rentalController::class);
+Route::get('/fetch/RentalMobil/pembayaran', [rentalController::class, 'getFetch']);
+Route::get('/fetch/RentalMobil/pembayaran/{id}', [rentalController::class, 'getFetchDetail']);
+Route::apiResource('/DataNasabah', DataNasabahController::class);
+Route::get('/fetch/dataNasabah', [DataNasabahController::class, 'getFetch']);
+Route::get('/fetch/{id}/dataNasabah', [DataNasabahController::class, 'getFetchDetail']);
+Route::apiResource('/asuransi', asuransiController::class);
+Route::get('/fetch/asuransi', [asuransiController::class, 'getFetch']);
+Route::get('/fetch/{id}/asuransi', [asuransiController::class, 'getFetchDetail']);

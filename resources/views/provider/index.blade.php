@@ -95,7 +95,7 @@
                     </div>
                     <div>
                         <h3 class="text-lg font-semibold">Tampil Detail Akun Bank</h3>
-                        <p class="text-sm">API : GET /api/obj-wisata</p>
+                        <p class="text-sm">API : GET /api/obj-wisata/{rekening(id)}</p>
                     </div>
                     <div>
                         <h3 class="text-lg font-semibold">Buat Akun Bank</h3>
@@ -110,7 +110,7 @@
                     </div>
                     <div>
                         <h3 class="text-lg font-semibold">Update Akun Bank</h3>
-                        <p class="text-sm">API : Update /api/obj-wisata/{rekening(id)}</p>
+                        <p class="text-sm">API : PUT /api/obj-wisata/{rekening(id)}</p>
                         <ul>
                             <li>DATA Yang <span class="font-bold">dibutuhkan :</span></li>
                             <li>id_wisata ex : "OP01"</li>
@@ -121,7 +121,7 @@
                     </div>
                     <div>
                         <h3 class="text-lg font-semibold">Hapus Akun Bank</h3>
-                        <p class="text-sm">API : Update /api/obj-wisata/{rekening(id)}</p>
+                        <p class="text-sm">API : DELETE /api/obj-wisata/{rekening(id)}</p>
                     </div>
                 </div>
             </div>
