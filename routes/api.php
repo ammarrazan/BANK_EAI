@@ -24,4 +24,7 @@ Route::apiResource('/RentalMobil',rentalController::class);
 Route::get("/fetch/RentalMobil", [rentalController::class, 'getFetch']);
 Route::get("/fetch/{id}/RentalMobil", [rentalController::class, 'getFetchDetail']);
 Route::apiResource('/DataNasabah',DataNasabahController::class);
+Route::get("/fetch/dataNasabah", [DataNasabahController::class, 'getFetch']);
+Route::get("/fetch/{id}/dataNasabah", [DataNasabahController::class, 'getFetchDetail']);
 Route::apiResource('/asuransi',asuransiController::class);
+

@@ -16,6 +16,7 @@ class data_nasabah_seeder extends Seeder
             'jenisTabungan'=>'Tahapan',
             'activatedDate'=>'2024/2/18',
             'expiredDate'=>'2027/2/18',
+            'saldo'=>'250000000',
         ]);
         data_nasabah_model::create([
             'id'=>107,
@@ -24,6 +25,8 @@ class data_nasabah_seeder extends Seeder
             'jenisTabungan'=>'Tahapan',
             'activatedDate'=>'2024/3/12',
             'expiredDate'=>'2027/3/12',
+            'saldo'=>'250000000',
+            
         ]);
         data_nasabah_model::create([
             'id'=>108,
@@ -31,6 +34,7 @@ class data_nasabah_seeder extends Seeder
             'norekening'=>1082021405,
             'jenisTabungan'=>'Prioritas',
             'activatedDate'=>'2024/3/17',
+            'saldo'=>'250000000',
            
         ]);
         data_nasabah_model::create([
@@ -39,6 +43,7 @@ class data_nasabah_seeder extends Seeder
             'norekening'=>1092021405,
             'jenisTabungan'=>'Prioritas',
             'activatedDate'=>'2024/1/17',
+            'saldo'=>'250000000',
     
         ]);
         data_nasabah_model::create([
@@ -48,6 +53,7 @@ class data_nasabah_seeder extends Seeder
             'jenisTabungan'=>'Jangka Panjang',
             'activatedDate'=>'2024/2/2',
             'expiredDate'=>'2029/2/2',
+            'saldo'=>'250000000',
         ]);
         data_nasabah_model::create([
             'id'=>101,
@@ -56,6 +62,7 @@ class data_nasabah_seeder extends Seeder
             'jenisTabungan'=>'Tahapan',
             'activatedDate'=>'2024/2/22',
             'expiredDate'=>'2027/2/22',
+            'saldo'=>'250000000',
         ]);
         data_nasabah_model::create([
             'id'=>102,
@@ -64,6 +71,7 @@ class data_nasabah_seeder extends Seeder
             'jenisTabungan'=>'Tahapan',
             'activatedDate'=>'2024/2/14',
             'expiredDate'=>'2027/2/14',
+            'saldo'=>'250000000',
         ]);
         data_nasabah_model::create([
             'id'=>103,
@@ -72,6 +80,7 @@ class data_nasabah_seeder extends Seeder
             'jenisTabungan'=>'Jangka Panjang',
             'activatedDate'=>'2024/2/16',
             'expiredDate'=>'2029/2/16',
+            'saldo'=>'250000000',
         ]);
         data_nasabah_model::create([
             'id'=>104,
@@ -80,6 +89,7 @@ class data_nasabah_seeder extends Seeder
             'jenisTabungan'=>'Tahapan',
             'activatedDate'=>'2024/1/11',
             'expiredDate'=>'2027/1/11',
+            'saldo'=>'250000000',
         ]);
         data_nasabah_model::create([
             'id'=>105,
@@ -88,6 +98,7 @@ class data_nasabah_seeder extends Seeder
             'jenisTabungan'=>'Xpresi',
             'activatedDate'=>'2024/3/13',
             'expiredDate'=>'2028/3/13',
+            'saldo'=>'250000000',
         ]);
         data_nasabah_model::create([
             'id'=>111,
@@ -96,6 +107,7 @@ class data_nasabah_seeder extends Seeder
             'jenisTabungan'=>'Tahapan',
             'activatedDate'=>'2024/4/24',
             'expiredDate'=>'2027/4/24',
+            'saldo'=>'250000000',
         ]);
         data_nasabah_model::create([
             'id'=>112,
@@ -104,6 +116,7 @@ class data_nasabah_seeder extends Seeder
             'jenisTabungan'=>'Xpresi',
             'activatedDate'=>'2024/4/16',
             'expiredDate'=>'2028/4/16',
+            'saldo'=>'250000000',
         ]);
         data_nasabah_model::create([
             'id'=>113,
@@ -112,6 +125,7 @@ class data_nasabah_seeder extends Seeder
             'jenisTabungan'=>'Tahapan',
             'activatedDate'=>'2024/2/21',
             'expiredDate'=>'2027/2/21',
+            'saldo'=>'250000000',
         ]);
         data_nasabah_model::create([
             'id'=>114,
@@ -120,6 +134,7 @@ class data_nasabah_seeder extends Seeder
             'jenisTabungan'=>'Tahapan',
             'activatedDate'=>'2023/12/27',
             'expiredDate'=>'2026/12/27',
+            'saldo'=>'250000000',
         ]);
         data_nasabah_model::create([
             'id'=>115,
@@ -127,6 +142,7 @@ class data_nasabah_seeder extends Seeder
             'norekening'=>1152021405,
             'jenisTabungan'=>'Prioritas',
             'activatedDate'=>'2024/1/18',
+            'saldo'=>'250000000',
          
         ]);
         data_nasabah_model::create([
@@ -136,6 +152,7 @@ class data_nasabah_seeder extends Seeder
             'jenisTabungan'=>'Xpresi',
             'activatedDate'=>'2023/7/12',
             'expiredDate'=>'2027/7/12',
+            'saldo'=>'250000000',
         ]);
         data_nasabah_model::create([
             'id'=>117,
@@ -144,6 +161,7 @@ class data_nasabah_seeder extends Seeder
             'jenisTabungan'=>'Xpresi',
             'activatedDate'=>'2023/11/15',
             'expiredDate'=>'2027/11/15',
+            'saldo'=>'250000000',
         ]);
         data_nasabah_model::create([
             'id'=>118,
@@ -151,7 +169,7 @@ class data_nasabah_seeder extends Seeder
             'norekening'=>1182021405,
             'jenisTabungan'=>'Prioritas',
             'activatedDate'=>'2023/12/21',
-   
+            'saldo'=>'250000000',
         ]);
         data_nasabah_model::create([
             'id'=>119,
@@ -160,6 +178,7 @@ class data_nasabah_seeder extends Seeder
             'jenisTabungan'=>'Tahapan',
             'activatedDate'=>'2023/12/14',
             'expiredDate'=>'2026/12/14',
+            'saldo'=>'250000000',
         ]);
         data_nasabah_model::create([
             'id'=>120,
@@ -168,6 +187,7 @@ class data_nasabah_seeder extends Seeder
             'jenisTabungan'=>'Xpresi',
             'activatedDate'=>'2024/5/15',
             'expiredDate'=>'2028/5/15',
+            'saldo'=>'250000000',
         ]);
     }
 }

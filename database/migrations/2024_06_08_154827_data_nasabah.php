@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('jenisTabungan');
             $table->date('activatedDate');
             $table->date('expiredDate')->nullable();
+            $table->float('saldo');
     });
 }
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\data_nasabah_model;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
 
 class DataNasabahController extends Controller
@@ -131,6 +132,7 @@ class DataNasabahController extends Controller
             'jenistabungan'=>'required|min:3',
             'activatedDate'=>'required|min:3',
             'expiredDate'=>'min:3',
+            'saldo'=>'required|min:3',
         ]);
         if ($validator->fails()){
             return response()->json($validator->errors(), 422);
@@ -142,6 +144,7 @@ class DataNasabahController extends Controller
         $data->jenistabungan=$request->jenistabungan;
         $data->activatedDate=$request->activatedDate;
         $data->expiredDate=$request->expiredDate;
+        $data->saldo=$request->saldo;
         $data->save();
 
         if ($data) {
@@ -188,4 +191,65 @@ class DataNasabahController extends Controller
             );
         }
     }
+    public function getFetch(){
+        try {
+            $response = Http::get('https://api-government.onrender.com/penduduk');
+    
+            if ($response->successful()) {
+                // return $response->json();
+                // Decode the JSON response to a PHP array
+                $data = $response->json();
+                $extractedData = [];
+                if (is_array($data) && !empty($data)) {
+                    foreach ($data as $item) {
+                        if (is_array($item) && isset($item['nik'], $item['nama'])) {
+                    
+                            $extractedData[] = [
+                                'nik' => $item['nik'],
+                                'nama' => $item['nama'],
+                            ];
+                        }
+                    }
+                } else {
+                    return ['error' => 'Unexpected data structure or empty response.'];
+                }
+                if (empty($extractedData)) {
+                    return ['error' => 'No matching data found.'];
+                }
+    
+                return $extractedData;
+            } else {
+                return ['error' => 'Failed to fetch data. Status code: ' . $response->status()];
+            }
+        } catch (\Exception $e) {
+            return ['error' => 'An error occurred: ' . $e->getMessage()];
+        }
+    }
+
+    public function getFetchDetail($id){
+        try {
+            $response = Http::get('https://api-government.onrender.com/penduduk/' . $id);
+    
+            if ($response->successful()) {
+                $data = $response->json();
+    
+                if (is_array($data) && isset($data['nik'], $data['nama'])) {
+                    
+                    $extractedData = [
+                        'nik' => $data['nik'],
+                        'nama' => $data['nama'],
+                    ];
+    
+                    return $extractedData;
+                } else {
+                    return ['error' => 'Required keys not found in response.'];
+                }
+            } else {
+                return ['error' => 'Failed to fetch data. Status code: ' . $response->status()];
+            }
+        } catch (\Exception $e) {
+            return ['error' => 'An error occurred: ' . $e->getMessage()];
+        }
+    }
 }
+
