@@ -15,7 +15,7 @@ class DataNasabahController extends Controller
      */
     public function index()
     {
-        $response = data_nasabah_model::paginate(5);
+        $response = data_nasabah_model::all();
         if ($response->count() > 0) {
             return response()->json(
                 [

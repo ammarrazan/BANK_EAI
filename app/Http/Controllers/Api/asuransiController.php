@@ -188,9 +188,10 @@ class asuransiController extends Controller
                 $extractedData = [];
                 if (is_array($data) && !empty($data)) {
                     foreach ($data as $item) {
-                        if (is_array($item) && isset($item['nama'], $item['kategori'], $item['jumlah'], $item['tagihan'])) {
+                        if (is_array($item) && isset($item['nama'], $item['id_asuransi'], $item['kategori'], $item['jumlah'], $item['tagihan'])) {
                             $extractedData[] = [
                                 'nama' => $item['nama'],
+                                'id_asuransi' => $item['id_asuransi'],
                                 'kategori' => $item['kategori'],
                                 'jumlah' => $item['jumlah'],
                                 'tagihan' => $item['tagihan']
@@ -215,15 +216,16 @@ class asuransiController extends Controller
 
     public function getFetchDetail($id){
         try {
-            $response = Http::get('https://eai-fastapi.onrender.com/bank' . $id);
+            $response = Http::get('https://eai-fastapi.onrender.com/bank/' . $id);
     
             if ($response->successful()) {
                 $data = $response->json();
     
-                if (is_array($data) && isset($data['nama'], $data['kategori'], $data['jumlah'], $data['tagihan'])) {
+                if (is_array($data) && isset($data['nama'], $data['id_asuransi'], $data['kategori'], $data['jumlah'], $data['tagihan'])) {
                     
                     $extractedData = [
                         'nama' => $data['nama'],
+                        'id_asuransi' => $data['id_asuransi'],
                         'kategori' => $data['kategori'],
                         'jumlah' => $data['jumlah'],
                         'tagihan' => $data['tagihan']
