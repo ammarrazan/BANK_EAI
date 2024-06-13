@@ -17,6 +17,8 @@ Route::apiResource('/obj-wisata', ObjWisataController::class);
 Route::get("/fetch/obj-wisata", [ObjWisataController::class, 'getFetch']);
 Route::get("/fetch/{id}/obj-wisata", [ObjWisataController::class, 'getFetchDetail']);
 Route::apiResource('/biro-tour', BiroTourController::class);
+Route::get("/fetch/biro-tour", [BiroTourController::class, 'getFetch']);
+Route::get("/fetch/{id}/biro-tour", [BiroTourController::class, 'getFetchDetail']);
 Route::apiResource('/hotel',hotelController::class);
 Route::get("/fetch/hotel", [hotelController::class, 'getFetch']);
 Route::get("/fetch/{id}/hotel", [hotelController::class, 'getFetchDetail']);
