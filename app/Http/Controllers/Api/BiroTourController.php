@@ -190,4 +190,66 @@ class BiroTourController extends Controller
             );
         }
     }
+    public function getFetch(){
+        try {
+            $response = Http::get('https://tour-guide-ks4n.onrender.com/tourguide');
+    
+            if ($response->successful()) {
+                // Decode the JSON response to a PHP array
+                $data = $response->json();
+                $extractedData = [];
+                if (is_array($data) && !empty($data)) {
+                    foreach ($data as $item) {
+                        if (is_array($item) && isset($item['id_guider'], $item['nama_guider'], $item['fee'],$item['profile'])) {
+                            $extractedData[] = [
+                                'id_guider' => $item['id_guider'],
+                                'nama_guider' => $item['nama_guider'],
+                                'fee' => $item['fee'],
+                                'profile' => $item['profile']
+                            ];
+                        }
+                    }
+                } else {
+                    return ['error' => 'Unexpected data structure or empty response.'];
+                }
+                if (empty($extractedData)) {
+                    return ['error' => 'No matching data found.'];
+                }
+    
+                return $extractedData;
+            } else {
+                return ['error' => 'Failed to fetch data. Status code: ' . $response->status()];
+            }
+        } catch (\Exception $e) {
+            return ['error' => 'An error occurred: ' . $e->getMessage()];
+        }
+    }
+
+    public function getFetchDetail($id){
+        try {
+            $response = Http::get('https://tour-guide-ks4n.onrender.com/tourguide/' . $id);
+    
+            if ($response->successful()) {
+                $data = $response->json();
+    
+                if (is_array($data) && isset($data['id_guider'], $data['nama_guider'], $data['fee'], $data['profile'])) {
+                    
+                    $extractedData = [
+                        'id_guider' => $data['id_guider'],
+                                'nama_guider' => $data['nama_guider'],
+                                'fee' => $data['fee'],
+                                'profile' => $data['profile']
+                    ];
+    
+                    return $extractedData;
+                } else {
+                    return ['error' => 'Required keys not found in response.'];
+                }
+            } else {
+                return ['error' => 'Failed to fetch data. Status code: ' . $response->status()];
+            }
+        } catch (\Exception $e) {
+            return ['error' => 'An error occurred: ' . $e->getMessage()];
+        }
+    }
 }

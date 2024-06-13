@@ -175,7 +175,7 @@
                     </div>
                     <div>
                         <h3 class="text-lg font-semibold">Update data pembayaran</h3>
-                        <p class="text-sm">API : Update /api/RentalMobil/{(id)}</p>
+                        <p class="text-sm">API : PUT /api/RentalMobil/{(id)}</p>
                         <ul>
                             <li>DATA Yang <span class="font-bold">dibutuhkan :</span></li>
                             <li>id ex : "3001101"</li>
@@ -192,7 +192,7 @@
                     </div>
                     <div>
                         <h3 class="text-lg font-semibold">Hapus data pembayaran</h3>
-                        <p class="text-sm">API : Update /api/RentalMobil/{(id)}</p>
+                        <p class="text-sm">API : DELETE /api/RentalMobil/{(id)}</p>
                     </div>
                 </div>
             </div>
@@ -220,13 +220,11 @@
                             <li>jumlah : "60"</li>
                             <li>tagihan ex :'100000' </li>
                             
-
-
                         </ul>
                     </div>
                     <div>
                         <h3 class="text-lg font-semibold">Update data pembayaran</h3>
-                        <p class="text-sm">API : Update /api/asuransi/{(id)}</p>
+                        <p class="text-sm">API : PUT /api/asuransi/{(id)}</p>
                         <ul>
                             <li>DATA Yang <span class="font-bold">dibutuhkan :</span></li>
                             <li>id ex : "201"</li>
@@ -236,16 +234,60 @@
                             <li>jumlah : "60"</li>
                             <li>tagihan ex :'100000' </li>
 
-
                         </ul>
                     </div>
                     <div>
                         <h3 class="text-lg font-semibold">Hapus data pembayaran</h3>
-                        <p class="text-sm">API : Update /api/asuransi/{(id)}</p>
+                        <p class="text-sm">API : DELETE /api/asuransi/{(id)}</p>
                     </div>
                 </div>
             </div>
-            
+            <div class="bg-white border-gray-500 h-auto rounded-lg shadow-lg shadow-gray-400 text-center p-4">
+            <h3 class="text-xl font-bold">Biro Tour</h3>
+            <hr class="border-1 border-gray-500 my-2">
+            <div class="space-y-3">
+                <div>
+                    <h3 class="text-lg font-semibold">Tampil seluruh data pembayaran Biro Tour</h3>
+                    <p class="text-sm">API : GET /api/biro-tour</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold">Tampil seluruh data pembayaran Biro Tour</h3>
+                    <p class="text-sm">API : GET /api/biro-tour/(id)</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold">Buat data Biro Tour</h3>
+                    <p class="text-sm">API : POST /api/biro-tour</p>
+                    <ul>
+                        <li>DATA Yang <span class="font-bold">dibutuhkan :</span></li>
+                        <li>id ex : '1142021402' </li>
+                        <li>nama_guider ex : 'Janggar'</li>
+                        <li>profile ex : 'Seorang pemandu wisata yang ramah keluarga dengan keahlian dalam merencanakan liburan yang menyenangkan bagi seluruh anggota keluarga.' </li>
+                        <li>saldo ex : '4500000' </li>
+                        <li>fee ex : '450000' </li>
+                        <li>no_guider ex : '114' </li>
+
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold">Update data pembayaran</h3>
+                    <p class="text-sm">API : PUT /api/biro-tour/{(id)}</p>
+                    <ul>
+                        <li>DATA Yang <span class="font-bold">dibutuhkan :</span></li>
+                        <li>id ex : '1142021402' </li>
+                        <li>nama_guider ex : 'Janggar'</li>
+                        <li>profile ex : 'Seorang pemandu wisata yang ramah keluarga dengan keahlian dalam merencanakan liburan yang menyenangkan bagi seluruh anggota keluarga.' </li>
+                        <li>saldo ex : '4500000' </li>
+                        <li>fee ex : '450000' </li>
+                        <li>no_guider ex : '114' </li>
+
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold">Hapus data pembayaran</h3>
+                    <p class="text-sm">API : DELETE /api/biro-tour/{(id)}</p>
+                </div>
+            </div>
+        </div>
         </div>
     </div>
 </body>
