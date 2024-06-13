@@ -117,7 +117,9 @@
                         <ul>
                             <li>DATA Yang <span class="font-bold">dibutuhkan :</span></li>
                             <li>id ex : "305123460"</li>
-                            <li>nama ex : "Suguru"</li>
+                            <li>BillingID ex : "123456"</li>
+                            <li>ReservationID ex : "C02"</li>
+                            <li>name ex : "Suguru"</li>
                             <li>total : "100000"</li>
                             <li>saldo : "100000"</li>
                             <li>paymentStatus : "paid"</li>
@@ -129,11 +131,12 @@
                         <ul>
                             <li>DATA Yang <span class="font-bold">dibutuhkan :</span></li>
                             <li>id ex : "305123460"</li>
-                            <li>nama ex : "Suguru"</li>
+                            <li>BillingID ex : "123456"</li>
+                            <li>ReservationID ex : "C02"</li>
+                            <li>name ex : "Suguru"</li>
                             <li>total : "100000"</li>
                             <li>saldo : "100000"</li>
                             <li>paymentStatus : "paid"</li>
-                        </ul>
                     </div>
                     <div>
                         <h3 class="text-lg font-semibold">Hapus data pembayaran</h3>
