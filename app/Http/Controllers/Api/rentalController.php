@@ -66,6 +66,7 @@ class rentalController extends Controller
             'id' => $request->id,
             'IDpembayaran' => $request->IDembayaran,
             'IDPenyewaan' => $request->IDpenyewaan,
+            'metodePembayaran'=>$request->metodePembayaran,
             'jenisKartuKredit' => $request->jenisKartuKredit,
             'nominal' => $request->nominal,
             'tanggalPembayaran' => $request->tanggalPembayaran,
@@ -191,11 +192,12 @@ class rentalController extends Controller
                 $extractedData = [];
                 if (is_array($data) && !empty($data)) {
                     foreach ($data as $item) {
-                        if (is_array($item) && isset($item['id_pembayaran'], $item['tanggal_pembayaran'],$item['jumlah_pembayaran'])) {
+                        if (is_array($item) && isset($item['id_pembayaran'], $item['tanggal_pembayaran'],$item['jumlah_pembayaran'],$item['metode_pembayaran'])) {
                             $extractedData[] = [
                                 'id_pembayaran' => $item['id_pembayaran'],
                                 'tanggal_pembayaran' => $item['tanggal_pembayaran'],
-                                'jumlah_pembayaran'=>$item['jumlah_pembayaran']
+                                'jumlah_pembayaran'=>$item['jumlah_pembayaran'],
+                                'metode_pembayaran'=>$item['metode_pembayaran']
                             ];
                         }
                     }
@@ -225,11 +227,12 @@ class rentalController extends Controller
                 $extractedData = [];
                 if (is_array($data) && !empty($data)) {
                     foreach ($data as $item) {
-                        if (is_array($item) && isset($item['id_pembayaran'], $item['tanggal_pembayaran'],$item['jumlah_pembayaran'])) {
+                        if (is_array($item) && isset($item['id_pembayaran'], $item['tanggal_pembayaran'],$item['jumlah_pembayaran'],$item['metode_pembayaran'])) {
                             $extractedData[] = [
                                 'id_pembayaran' => $item['id_pembayaran'],
                                 'tanggal_pembayaran' => $item['tanggal_pembayaran'],
-                                'jumlah_pembayaran'=>$item['jumlah_pembayaran']
+                                'jumlah_pembayaran'=>$item['jumlah_pembayaran'],
+                                'metode_pembayaran'=>$item['metode_pembayaran']
                             ];
                         }
                     }

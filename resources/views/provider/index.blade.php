@@ -164,6 +164,7 @@
                             <li>id ex : "3001101"</li>
                             <li>IDpembayaran ex :'C01' </li>
                             <li>IDpenyewaann ex : '001'</li>
+                            <li>metodePembayaran ex: 'tunai'</li>
                             <li>jenisKartuKredit ex : ""</li>
                             <li>nominal : "1500000"</li>
                             <li>tanggalPembayaran ex :'2024-03-25' </li>
@@ -180,6 +181,7 @@
                             <li>id ex : "3001101"</li>
                             <li>IDpembayaran ex :'C01' </li>
                             <li>IDpenyewaann ex : '001'</li>
+                            <li>metodePembayaran ex: 'tunai'</li>
                             <li>jenisKartuKredit ex : ""</li>
                             <li>nominal : "1500000"</li>
                             <li>tanggalPembayaran ex :'2024-03-25' </li>
