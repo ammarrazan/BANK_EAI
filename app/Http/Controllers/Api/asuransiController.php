@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\asuransi;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
 
 class asuransiController extends Controller
@@ -177,65 +178,66 @@ class asuransiController extends Controller
             );
         }
     }
+    public function getFetch(){
+        try {
+            $response = Http::get('https://eai-fastapi.onrender.com/bank');
+    
+            if ($response->successful()) {
+                // Decode the JSON response to a PHP array
+                $data = $response->json();
+                $extractedData = [];
+                if (is_array($data) && !empty($data)) {
+                    foreach ($data as $item) {
+                        if (is_array($item) && isset($item['nama'], $item['kategori'], $item['jumlah'], $item['tagihan'])) {
+                            $extractedData[] = [
+                                'nama' => $item['nama'],
+                                'kategori' => $item['kategori'],
+                                'jumlah' => $item['jumlah'],
+                                'tagihan' => $item['tagihan']
+                            ];
+                        }
+                    }
+                } else {
+                    return ['error' => 'Unexpected data structure or empty response.'];
+                }
+                if (empty($extractedData)) {
+                    return ['error' => 'No matching data found.'];
+                }
+    
+                return $extractedData;
+            } else {
+                return ['error' => 'Failed to fetch data. Status code: ' . $response->status()];
+            }
+        } catch (\Exception $e) {
+            return ['error' => 'An error occurred: ' . $e->getMessage()];
+        }
+    }
 
-    // public function getFetch(){
-    //     try {
-    //         $response = Http::get('https://eai-fastapi.onrender.com/bank');
+    public function getFetchDetail($id){
+        try {
+            $response = Http::get('https://eai-fastapi.onrender.com/bank' . $id);
     
-    //         if ($response->successful()) {
-    //             // Decode the JSON response to a PHP array
-    //             $data = $response->json();
-    //             $extractedData = [];
-    //             if (is_array($data) && !empty($data)) {
-    //                 foreach ($data as $item) {
-    //                     if (is_array($item) && isset($item[], $item[], $item[])) {
-    //                         $extractedData[] = [
-    //                             'id_wis' => $item['id_wisata'],
-    //                             'nama_objek' => $item['nama_objek'],
-    //                             'harga_tiket' => $item['harga_tiket']
-    //                         ];
-    //                     }
-    //                 }
-    //             } else {
-    //                 return ['error' => 'Unexpected data structure or empty response.'];
-    //             }
-    //             if (empty($extractedData)) {
-    //                 return ['error' => 'No matching data found.'];
-    //             }
+            if ($response->successful()) {
+                $data = $response->json();
     
-    //             return $extractedData;
-    //         } else {
-    //             return ['error' => 'Failed to fetch data. Status code: ' . $response->status()];
-    //         }
-    //     } catch (\Exception $e) {
-    //         return ['error' => 'An error occurred: ' . $e->getMessage()];
-    //     }
-    // }
-
-    // public function getFetchDetail($id){
-    //     try {
-    //         $response = Http::get('https://eai-fastapi.onrender.com/bank' . $id);
-    
-    //         if ($response->successful()) {
-    //             $data = $response->json();
-    
-    //             if (is_array($data) && isset($data['id_wisata'], $data['nama_objek'], $data['harga_tiket'])) {
+                if (is_array($data) && isset($data['nama'], $data['kategori'], $data['jumlah'], $data['tagihan'])) {
                     
-    //                 $extractedData = [
-    //                     // 'id_wisata' => $data['id_wisata'],
-    //                     // 'nama_objek' => $data['nama_objek'],
-    //                     // 'harga_tiket' => $data['harga_tiket']
-    //                 ];
+                    $extractedData = [
+                        'nama' => $data['nama'],
+                        'kategori' => $data['kategori'],
+                        'jumlah' => $data['jumlah'],
+                        'tagihan' => $data['tagihan']
+                    ];
     
-    //                 return $extractedData;
-    //             } else {
-    //                 return ['error' => 'Required keys not found in response.'];
-    //             }
-    //         } else {
-    //             return ['error' => 'Failed to fetch data. Status code: ' . $response->status()];
-    //         }
-    //     } catch (\Exception $e) {
-    //         return ['error' => 'An error occurred: ' . $e->getMessage()];
-    //     }
-    // }
+                    return $extractedData;
+                } else {
+                    return ['error' => 'Required keys not found in response.'];
+                }
+            } else {
+                return ['error' => 'Failed to fetch data. Status code: ' . $response->status()];
+            }
+        } catch (\Exception $e) {
+            return ['error' => 'An error occurred: ' . $e->getMessage()];
+        }
+    }
 }
