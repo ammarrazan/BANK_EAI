@@ -15,48 +15,53 @@ class hotelSeeder extends Seeder
     {
         hotel::create([
             'id'=>305123456,
-            'jenis'=>'Visa',
+            'BillID'=>123456,
+            'ReservationID'=>111,
+            'jenisKartuKredit'=>'Visa',
             'name'=>'Ale',
             'total'=>1000000,
-            'saldo'=>10000000,
             'paymentStatus'=>'paid'
 
         ]);
 
         hotel::create([
             'id'=>305123457,
-            'jenis'=>'Master_card',
+            'BillID'=>123457,
+            'ReservationID'=>222,
+            'jenisKartuKredit'=>'Master_card',
             'name'=>'Leo',
             'total'=>1000000,
-            'saldo'=>10000000,
             'paymentStatus'=>'paid'
 
         ]);
 
         hotel::create([
             'id'=>305123458,
-            'jenis'=>'Visa',
+            'BillID'=>123458,
+            'ReservationID'=>333,
+            'jenisKartuKredit'=>'Visa',
             'name'=>'Lea',
             'total'=>4000000,
-            'saldo'=>40000000,
             'paymentStatus'=>'paid'
 
         ]);
         hotel::create([
             'id'=>305123459,
-            'jenis'=>'Visa',
+            'BillID'=>123459,
+            'ReservationID'=>444,
+            'jenisKartuKredit'=>'Visa',
             'name'=>'Satoru',
             'total'=>2000000,
-            'saldo'=>20000000,
             'paymentStatus'=>'paid'
 
         ]);
         hotel::create([
             'id'=>305123460,
-            'jenis'=>'Master_card',
+            'BillID'=>123460,
+            'ReservationID'=>555,
+            'jenisKartuKredit'=>'Master_card',
             'name'=>'Suguru',
             'total'=>6000000,
-            'saldo'=>60000000,
             'paymentStatus'=>'paid'
 
         ]);

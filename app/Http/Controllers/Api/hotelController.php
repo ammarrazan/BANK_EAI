@@ -44,10 +44,11 @@ class hotelController extends Controller
     {
         $validator=Validator::make($request->all(), [
             'id'=>'required|min:3',
-            'jenis'=>'required|min:3',
+            'BillID'=>'required|min:3',
+            'ReservationID'=>'required|min:3',
+            'jenisKartuKredit'=>'required|min:3',
             'name'=>'required|min:3',
             'total'=>'required|min:3',
-            'saldo'=>'required|min:3',
             'paymentStatus'=>'required'
         ]);
         if ($validator->fails()){
@@ -64,10 +65,11 @@ class hotelController extends Controller
         }
         $data = hotel::create([
             'id'=>$request->id,
-            'jenis'=>$request->jenis,
+            'BillID'=>$request->BIllID,
+            'ReservationID'=>$request->ReservationID,
+            'jenisKartuKredit'=>$request->jenisKartuKredit,
             'name'=>$request->name,
             'total'=>$request->total,
-            'saldo'=>$request->saldo,
             'paymentStatus'=>$request->payementStatus
         ]);
         if ($data) {
@@ -130,10 +132,11 @@ class hotelController extends Controller
     public function update(Request $request, string $id)
     {
         $validator = Validator::make($request->all(), [
-            'jenis'=>'required|min:3',
+            'BillID'=>'required|min:3',
+            'ReservationID'=>'required|min:3',
+            'jenisKartuKredit'=>'required|min:3',
             'name'=>'required|min:3',
             'total'=>'required',
-            'saldo'=>'required',
             'paymentStatus'=>'required'
             
         ]);
@@ -141,10 +144,12 @@ class hotelController extends Controller
             return response()->json($validator->errors(), 422);
         }
         $data=hotel::find($id);
-        $data->jenis=$request->jenis;
+        $data->BIllingID=$request->BillingID;
+        $data->ReservationID->$request->ReservationID;
+        $data->jenisKartuKredit=$request->jenisKartuKredit;
         $data->name=$request->name;
         $data->total=$request->total;
-        $data->saldo=$request->saldo;
+        $data->paymentStatus=$request->paymentStatus;
         $data->save();
 
         if ($data) {
@@ -191,5 +196,6 @@ class hotelController extends Controller
             );
         }
     }
+
     
 }

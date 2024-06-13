@@ -159,11 +159,14 @@
                         <ul>
                             <li>DATA Yang <span class="font-bold">dibutuhkan :</span></li>
                             <li>id ex : "3001101"</li>
+                            <li>IDpembayaran ex :'C01' </li>
+                            <li>IDpenyewaann ex : '001'</li>
                             <li>jenisKartuKredit ex : ""</li>
-                            <li>jenisTabungan : "Tahapan"</li>
                             <li>nominal : "1500000"</li>
-                            <li>saldo : "1500000000"</li>
-                            <li>nama : Ale</li>
+                            <li>tanggalPembayaran ex :'2024-03-25' </li>
+                            <li>statusPembayaran ex : 'lunas'</li>
+
+
                         </ul>
                     </div>
                     <div>
@@ -172,11 +175,14 @@
                         <ul>
                             <li>DATA Yang <span class="font-bold">dibutuhkan :</span></li>
                             <li>id ex : "3001101"</li>
+                            <li>IDpembayaran ex :'C01' </li>
+                            <li>IDpenyewaann ex : '001'</li>
                             <li>jenisKartuKredit ex : ""</li>
-                            <li>jenisTabungan : "Tahapan"</li>
                             <li>nominal : "1500000"</li>
-                            <li>saldo : "1500000000"</li>
-                            <li>nama : Ale</li>
+                            <li>tanggalPembayaran ex :'2024-03-25' </li>
+                            <li>statusPembayaran ex : 'lunas'</li>
+
+
                         </ul>
                     </div>
                     <div>

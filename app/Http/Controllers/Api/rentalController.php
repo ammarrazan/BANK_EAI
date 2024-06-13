@@ -96,7 +96,7 @@ class rentalController extends Controller
     public function show(string $id)
     {
         $data=RentalMobil::where('id',$id)
-        ->orWhere('nama','like','%'.$id.'%')
+        ->orWhere('IDepembayaran','like','%'.$id.'%')
         ->get();
 
         if ($data->count() > 0) {

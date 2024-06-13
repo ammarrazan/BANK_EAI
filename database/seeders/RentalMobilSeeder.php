@@ -14,7 +14,7 @@ class RentalMobilSeeder extends Seeder
     public function run(): void
     {
         RentalMobil::create([
-            'id'=>3001101,
+            'id'=>'3001101',
             'IDpembayaran'=>'C01',
             'IDPenyewaan'=>001,
             'jenisKartuKredit'=>"",
@@ -23,7 +23,7 @@ class RentalMobilSeeder extends Seeder
             'statusPembayaran'=>'lunas'
         ]);
         RentalMobil::create([
-            'id'=>3303102,
+            'id'=>'3303102',
             'IDpembayaran'=>'B01',
             'IDPenyewaan'=>002,
             'jenisKartuKredit'=>"",
@@ -32,7 +32,7 @@ class RentalMobilSeeder extends Seeder
             'statusPembayaran'=>'BelumLunas'
         ]);
         RentalMobil::create([
-            'id'=>3305103,
+            'id'=>'3305103',
             'IDpembayaran'=>'K01',
             'IDPenyewaan'=>003,
             'jenisKartuKredit'=>"Visa",
@@ -41,7 +41,7 @@ class RentalMobilSeeder extends Seeder
             'statusPembayaran'=>'lunas'
         ]);
         RentalMobil::create([
-            'id'=>3001104,
+            'id'=>'3001104',
             'IDpembayaran'=>'C02',
             'IDPenyewaan'=>004,
             'jenisKartuKredit'=>"",
@@ -50,7 +50,7 @@ class RentalMobilSeeder extends Seeder
             'statusPembayaran'=>'lunas'
         ]);
         RentalMobil::create([
-            'id'=>3303105,
+            'id'=>'3303105',
             'IDpembayaran'=>'B02',
             'IDPenyewaan'=>005,
             'jenisKartuKredit'=>"",
