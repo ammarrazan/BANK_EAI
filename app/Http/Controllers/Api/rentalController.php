@@ -14,24 +14,24 @@ class rentalController extends Controller
      */
     public function index()
     {
-        $response=RentalMobil::paginate(5);
-        if($response->count()>0){
-            return response()->json([
-                'status'=> true,
-                'message'=>'data pembayaran customer rental mobil',
-                'data'=>$response,
-            ],
-            200,
+        $response = RentalMobil::paginate(5);
+        if ($response->count() > 0) {
+            return response()->json(
+                [
+                    'status' => true,
+                    'message' => 'data pembayaran customer rental mobil',
+                    'data' => $response,
+                ],
+                200,
             );
-        }else{
-            return response()->json([
-                'status'=>false,
-                'messsage'=>'data not found'
-
-            ],
-            404,
-        );
-
+        } else {
+            return response()->json(
+                [
+                    'status' => false,
+                    'messsage' => 'data not found',
+                ],
+                404,
+            );
         }
     }
 
@@ -40,16 +40,16 @@ class rentalController extends Controller
      */
     public function store(Request $request)
     {
-        $validator=Validator::make($request->all(),[
-            'id'=>'required|min:3',
-            'IDpembayaran'=>'required|min:3',
-            'IDPenyewaan'=>'required|min:3',
-            'jenisKartuKredit'=>"",
-            'nominal'=>'required|min:3',
-            'tanggalPembayaran'=>'required|min:3',
-            'statusPembayaran'=>'required|min:3'
+        $validator = Validator::make($request->all(), [
+            'id' => 'required|min:3',
+            'IDpembayaran' => 'required|min:3',
+            'IDPenyewaan' => 'required|min:3',
+            'jenisKartuKredit' => '',
+            'nominal' => 'required|min:3',
+            'tanggalPembayaran' => 'required|min:3',
+            'statusPembayaran' => 'required|min:3',
         ]);
-        if ($validator->fails()){
+        if ($validator->fails()) {
             return response()->json($validator->errors(), 422);
         }
         if (RentalMobil::where('id', $request->id)->exists()) {
@@ -62,13 +62,13 @@ class rentalController extends Controller
             );
         }
         $data = RentalMobil::create([
-            'id'=>$request->id,
-            'IDpembayaran'=>$request->IDembayaran,
-            'IDPenyewaan'=>$request->IDpenyewaan,
-            'jenisKartuKredit'=>$request->jenisKartuKredit,
-            'nominal'=>$request->nominal,
-            'tanggalPembayaran'=>$request->tanggalPembayaran,
-            'statusPembayaran'=>$request->statusPembayaran
+            'id' => $request->id,
+            'IDpembayaran' => $request->IDembayaran,
+            'IDPenyewaan' => $request->IDpenyewaan,
+            'jenisKartuKredit' => $request->jenisKartuKredit,
+            'nominal' => $request->nominal,
+            'tanggalPembayaran' => $request->tanggalPembayaran,
+            'statusPembayaran' => $request->statusPembayaran,
         ]);
         if ($data) {
             return response()->json(
@@ -95,9 +95,9 @@ class rentalController extends Controller
      */
     public function show(string $id)
     {
-        $data=RentalMobil::where('id',$id)
-        ->orWhere('nama','like','%'.$id.'%')
-        ->get();
+        $data = RentalMobil::where('id', $id)
+            ->orWhere('IDpembayaran', 'like', '%' . $id . '%')
+            ->get();
 
         if ($data->count() > 0) {
             return response()->json(
@@ -125,15 +125,15 @@ class rentalController extends Controller
     public function update(Request $request, string $id)
     {
         $validator = Validator::make($request->all(), [
-            'nominal'=>'required',
-            'saldo'=>'required'
+            'nominal' => 'required',
+            'saldo' => 'required',
         ]);
-        if ($validator->fails()){
+        if ($validator->fails()) {
             return response()->json($validator->errors(), 422);
         }
-        $data=RentalMobil::find($id);
-        $data->nominal=$request->nominal;
-        $data->saldo=$request->saldo;
+        $data = RentalMobil::find($id);
+        $data->nominal = $request->nominal;
+        $data->saldo = $request->saldo;
         $data->save();
 
         if ($data) {
@@ -180,4 +180,4 @@ class rentalController extends Controller
             );
         }
     }
-    };
+}
