@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\RentalMobil;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
 
 class rentalController extends Controller
@@ -65,6 +66,7 @@ class rentalController extends Controller
             'id' => $request->id,
             'IDpembayaran' => $request->IDembayaran,
             'IDPenyewaan' => $request->IDpenyewaan,
+            'metodePembayaran' => $request->metodePembayaran,
             'jenisKartuKredit' => $request->jenisKartuKredit,
             'nominal' => $request->nominal,
             'tanggalPembayaran' => $request->tanggalPembayaran,
@@ -126,14 +128,14 @@ class rentalController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'nominal' => 'required',
-            'saldo' => 'required',
+            'statusPembayaran' => 'required',
         ]);
         if ($validator->fails()) {
             return response()->json($validator->errors(), 422);
         }
         $data = RentalMobil::find($id);
         $data->nominal = $request->nominal;
-        $data->saldo = $request->saldo;
+        $data->statusPembayaran = $request->statusPembayaran;
         $data->save();
 
         if ($data) {
@@ -178,6 +180,62 @@ class rentalController extends Controller
                 ],
                 500,
             );
+        }
+    }
+    public function getFetch()
+    {
+        try {
+            $response = Http::get('https://rental-mobil-api.onrender.com/pembayaran');
+
+            if ($response->successful()) {
+                // Decode the JSON response to a PHP array
+                $data = $response->json();
+                $extractedData = [];
+                if (is_array($data) && !empty($data)) {
+                    foreach ($data as $item) {
+                        if (is_array($item) && isset($item['id_pembayaran'], $item['tanggal_pembayaran'], $item['jumlah_pembayaran'], $item['metode_pembayaran'])) {
+                            $extractedData[] = [
+                                'id_pembayaran' => $item['id_pembayaran'],
+                                'tanggal_pembayaran' => $item['tanggal_pembayaran'],
+                                'jumlah_pembayaran' => $item['jumlah_pembayaran'],
+                                'metode_pembayaran' => $item['metode_pembayaran'],
+                            ];
+                        }
+                    }
+                } else {
+                    return ['error' => 'Unexpected data structure or empty response.'];
+                }
+                if (empty($extractedData)) {
+                    return ['error' => 'No matching data found.'];
+                }
+
+                return $extractedData;
+            } else {
+                return ['error' => 'Failed to fetch data. Status code: ' . $response->status()];
+            }
+        } catch (\Exception $e) {
+            return ['error' => 'An error occurred: ' . $e->getMessage()];
+        }
+    }
+
+    public function getFetchDetail($id)
+    {
+        try {
+            $response = Http::get('https://rental-mobil-api.onrender.com/pembayaran/');
+
+            if ($response->successful()) {
+                $data = $response->json();
+                foreach ($data as $item) {
+                    if ($item['id_pembayaran'] === $id) {
+                        return $item;
+                    }
+                }
+                return ['error' => 'ID pembayaran tidak ditemukan: ' . $id];
+            } else {
+                return ['error' => 'Failed to fetch data. Status code: ' . $response->status()];
+            }
+        } catch (\Exception $e) {
+            return ['error' => 'An error occurred: ' . $e->getMessage()];
         }
     }
 }

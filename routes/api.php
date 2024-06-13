@@ -18,9 +18,15 @@ Route::get("/fetch/obj-wisata", [ObjWisataController::class, 'getFetch']);
 Route::get("/fetch/{id}/obj-wisata", [ObjWisataController::class, 'getFetchDetail']);
 Route::apiResource('/biro-tour', BiroTourController::class);
 Route::apiResource('/hotel',hotelController::class);
+Route::get("/fetch/hotel", [hotelController::class, 'getFetch']);
+Route::get("/fetch/{id}/hotel", [hotelController::class, 'getFetchDetail']);
 Route::apiResource('/RentalMobil',rentalController::class);
+Route::get("/fetch/RentalMobil", [rentalController::class, 'getFetch']);
+Route::get("/fetch/{id}/RentalMobil", [rentalController::class, 'getFetchDetail']);
 Route::apiResource('/DataNasabah',DataNasabahController::class);
 Route::get("/fetch/dataNasabah", [DataNasabahController::class, 'getFetch']);
 Route::get("/fetch/{id}/dataNasabah", [DataNasabahController::class, 'getFetchDetail']);
 Route::apiResource('/asuransi',asuransiController::class);
+Route::get("/fetch/asuransi", [asuransiController::class, 'getFetch']);
+Route::get("/fetch/{id}/asuransi", [asuransiController::class, 'getFetchDetail']);
 

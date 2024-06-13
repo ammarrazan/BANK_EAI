@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('hotel_table',function (Blueprint $table) {
             $table->id ();
-            $table->string('jenis');
+            $table->integer('BillID');
+            $table->integer('ReservationID');
+            $table->string('jenisKartuKredit');
             $table->string('name');
             $table->float ('total');
-            $table->float('saldo');
             $table->string('paymentStatus');
 
         });

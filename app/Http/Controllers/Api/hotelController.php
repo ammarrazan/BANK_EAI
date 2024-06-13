@@ -44,10 +44,11 @@ class hotelController extends Controller
     {
         $validator=Validator::make($request->all(), [
             'id'=>'required|min:3',
-            'jenis'=>'required|min:3',
+            'BillID'=>'required|min:3',
+            'ReservationID'=>'required|min:3',
+            'jenisKartuKredit'=>'required|min:3',
             'name'=>'required|min:3',
             'total'=>'required|min:3',
-            'saldo'=>'required|min:3',
             'paymentStatus'=>'required'
         ]);
         if ($validator->fails()){
@@ -64,10 +65,11 @@ class hotelController extends Controller
         }
         $data = hotel::create([
             'id'=>$request->id,
-            'jenis'=>$request->jenis,
+            'BillID'=>$request->BIllID,
+            'ReservationID'=>$request->ReservationID,
+            'jenisKartuKredit'=>$request->jenisKartuKredit,
             'name'=>$request->name,
             'total'=>$request->total,
-            'saldo'=>$request->saldo,
             'paymentStatus'=>$request->payementStatus
         ]);
         if ($data) {
@@ -130,10 +132,7 @@ class hotelController extends Controller
     public function update(Request $request, string $id)
     {
         $validator = Validator::make($request->all(), [
-            'jenis'=>'required|min:3',
-            'name'=>'required|min:3',
             'total'=>'required',
-            'saldo'=>'required',
             'paymentStatus'=>'required'
             
         ]);
@@ -141,10 +140,8 @@ class hotelController extends Controller
             return response()->json($validator->errors(), 422);
         }
         $data=hotel::find($id);
-        $data->jenis=$request->jenis;
-        $data->name=$request->name;
         $data->total=$request->total;
-        $data->saldo=$request->saldo;
+        $data->paymentStatus=$request->paymentStatus;
         $data->save();
 
         if ($data) {
@@ -191,5 +188,74 @@ class hotelController extends Controller
             );
         }
     }
+
+    public function getFetch(){
+        try {
+            $response = Http::get('https://hotelbaru.onrender.com/billings');
+    
+            if ($response->successful()) {
+                // Decode the JSON response to a PHP array
+                $data = $response->json();
+                $extractedData = [];
+                if (is_array($data) && !empty($data)) {
+                    foreach ($data as $item) {
+                        if (is_array($item) && isset($item['bill_id'], $item['reservation_id'])) {
+                            $extractedData[] = [
+                                'bill_id' => $item['bill_id'],
+                                'reservation_id' => $item['reservation_id']
+                            ];
+                        }
+                    }
+                } else {
+                    return ['error' => 'Unexpected data structure or empty response.'];
+                }
+                if (empty($extractedData)) {
+                    return ['error' => 'No matching data found.'];
+                }
+    
+                return $extractedData;
+            } else {
+                return ['error' => 'Failed to fetch data. Status code: ' . $response->status()];
+            }
+        } catch (\Exception $e) {
+            return ['error' => 'An error occurred: ' . $e->getMessage()];
+        }
+    }
+
+    public function getFetchDetail($id){
+        try {
+            $response = Http::get('https://hotelbaru.onrender.com/billings/'. $id);
+    
+            if ($response->successful()) {
+                // Decode the JSON response to a PHP array
+                $data = $response->json();
+                $extractedData = [];
+                if (is_array($data) && !empty($data)) {
+                    foreach ($data as $item) {
+                        if (is_array($item) && isset($item['bill_id'], $item['reservation_id'])) {
+                            $extractedData[] = [
+                                'bill_id' => $item['bill_id'],
+                                'reservation_id' => $item['reservation_id']
+                            ];
+                        }
+                    }
+                } else {
+                    return ['error' => 'Unexpected data structure or empty response.'];
+                }
+                if (empty($extractedData)) {
+                    return ['error' => 'No matching data found.'];
+                }
+    
+                return $extractedData;
+            } else {
+                return ['error' => 'Failed to fetch data. Status code: ' . $response->status()];
+            }
+        } catch (\Exception $e) {
+            return ['error' => 'An error occurred: ' . $e->getMessage()];
+        }
+    }
+
+
+
     
 }
