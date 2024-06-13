@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\asuransi;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -45,13 +44,8 @@ class asuransiController extends Controller
             'id'=>'required|min:3',
             'rekening'=>'required|min:3',
             'nama'=>'required|min:3',
-            'jenis_nasabah'=>'required|min:3',
-            'jenis_tabungan'=>'required|min:3',
             'kategori'=>'required|min:3',
             'jumlah'=>'required|min:3',
-            'active_date'=>'required|min:3',
-            'expired'=>'required|min:3',
-            'saldo'=>'required|min:3',
             'tagihan'=>'required|min:3'
         ]);
         if ($validator->fails()){
@@ -70,13 +64,8 @@ class asuransiController extends Controller
             'id'=>$request->id,
             'rekening'=>$request->rekening,
             'nama'=>$request->nama,
-            'jenis_nasabah'=>$request->jenis_nasabah,
-            'jenis_tabungan'=>$request->jenis_tabungan,
             'kategori'=>$request->kategori,
             'jumlah'=>$request->jumlah,
-            'active_date'=>$request->active_date,
-            'expired'=>$request->expired,
-            'saldo'=>$request->saldo,
             'tagihan'=>$request->tagihan,
         ]);
         if ($data) {
@@ -134,7 +123,6 @@ class asuransiController extends Controller
     public function update(Request $request, string $id)
     {
         $validator = Validator::make($request->all(), [
-            'saldo'=>'required',
             'tagihan'=>'required'
 
         ]);
@@ -142,7 +130,6 @@ class asuransiController extends Controller
             return response()->json($validator->errors(), 422);
         }
         $data=asuransi::find($id);
-        $data->saldo=$request->saldo;
         $data->tagihan=$request->tagihan;
         $data->save();
 
@@ -190,4 +177,65 @@ class asuransiController extends Controller
             );
         }
     }
+
+    // public function getFetch(){
+    //     try {
+    //         $response = Http::get('https://eai-fastapi.onrender.com/bank');
+    
+    //         if ($response->successful()) {
+    //             // Decode the JSON response to a PHP array
+    //             $data = $response->json();
+    //             $extractedData = [];
+    //             if (is_array($data) && !empty($data)) {
+    //                 foreach ($data as $item) {
+    //                     if (is_array($item) && isset($item[], $item[], $item[])) {
+    //                         $extractedData[] = [
+    //                             'id_wis' => $item['id_wisata'],
+    //                             'nama_objek' => $item['nama_objek'],
+    //                             'harga_tiket' => $item['harga_tiket']
+    //                         ];
+    //                     }
+    //                 }
+    //             } else {
+    //                 return ['error' => 'Unexpected data structure or empty response.'];
+    //             }
+    //             if (empty($extractedData)) {
+    //                 return ['error' => 'No matching data found.'];
+    //             }
+    
+    //             return $extractedData;
+    //         } else {
+    //             return ['error' => 'Failed to fetch data. Status code: ' . $response->status()];
+    //         }
+    //     } catch (\Exception $e) {
+    //         return ['error' => 'An error occurred: ' . $e->getMessage()];
+    //     }
+    // }
+
+    // public function getFetchDetail($id){
+    //     try {
+    //         $response = Http::get('https://eai-fastapi.onrender.com/bank' . $id);
+    
+    //         if ($response->successful()) {
+    //             $data = $response->json();
+    
+    //             if (is_array($data) && isset($data['id_wisata'], $data['nama_objek'], $data['harga_tiket'])) {
+                    
+    //                 $extractedData = [
+    //                     // 'id_wisata' => $data['id_wisata'],
+    //                     // 'nama_objek' => $data['nama_objek'],
+    //                     // 'harga_tiket' => $data['harga_tiket']
+    //                 ];
+    
+    //                 return $extractedData;
+    //             } else {
+    //                 return ['error' => 'Required keys not found in response.'];
+    //             }
+    //         } else {
+    //             return ['error' => 'Failed to fetch data. Status code: ' . $response->status()];
+    //         }
+    //     } catch (\Exception $e) {
+    //         return ['error' => 'An error occurred: ' . $e->getMessage()];
+    //     }
+    // }
 }
