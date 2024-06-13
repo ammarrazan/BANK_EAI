@@ -20,4 +20,7 @@ Route::apiResource('/biro-tour', BiroTourController::class);
 Route::apiResource('/hotel',hotelController::class);
 Route::apiResource('/RentalMobil',rentalController::class);
 Route::apiResource('/DataNasabah',DataNasabahController::class);
+Route::get("/fetch/dataNasabah", [DataNasabahController::class, 'getFetch']);
+Route::get("/fetch/{id}/dataNasabah", [DataNasabahController::class, 'getFetchDetail']);
 Route::apiResource('/asuransi',asuransiController::class);
+
