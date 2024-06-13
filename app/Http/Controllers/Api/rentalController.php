@@ -127,12 +127,14 @@ class rentalController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'nominal' => 'required',
+            'statusPembayaran'=>'required'
         ]);
         if ($validator->fails()) {
             return response()->json($validator->errors(), 422);
         }
         $data = RentalMobil::find($id);
         $data->nominal = $request->nominal;
+        $data->statusPembayaran=$request->statusPembayaran;
         $data->save();
 
         if ($data) {

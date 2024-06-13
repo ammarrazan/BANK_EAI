@@ -132,10 +132,6 @@ class hotelController extends Controller
     public function update(Request $request, string $id)
     {
         $validator = Validator::make($request->all(), [
-            'BillID'=>'required|min:3',
-            'ReservationID'=>'required|min:3',
-            'jenisKartuKredit'=>'required|min:3',
-            'name'=>'required|min:3',
             'total'=>'required',
             'paymentStatus'=>'required'
             
@@ -144,10 +140,6 @@ class hotelController extends Controller
             return response()->json($validator->errors(), 422);
         }
         $data=hotel::find($id);
-        $data->BIllingID=$request->BillingID;
-        $data->ReservationID->$request->ReservationID;
-        $data->jenisKartuKredit=$request->jenisKartuKredit;
-        $data->name=$request->name;
         $data->total=$request->total;
         $data->paymentStatus=$request->paymentStatus;
         $data->save();
