@@ -43,8 +43,8 @@ class rentalController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'id' => 'required|min:3',
-            'IDpembayaran' => 'required|min:3',
-            'IDPenyewaan' => 'required|min:3',
+            'IDpembayaran' => 'required',
+            'IDPenyewaan' => 'required',
             'jenisKartuKredit' => '',
             'nominal' => 'required|min:3',
             'tanggalPembayaran' => 'required|min:3',
@@ -64,8 +64,8 @@ class rentalController extends Controller
         }
         $data = RentalMobil::create([
             'id' => $request->id,
-            'IDpembayaran' => $request->IDembayaran,
-            'IDPenyewaan' => $request->IDpenyewaan,
+            'IDpembayaran' => $request->IDpembayaran,
+            'IDPenyewaan' => $request->IDPenyewaan,
             'metodePembayaran' => $request->metodePembayaran,
             'jenisKartuKredit' => $request->jenisKartuKredit,
             'nominal' => $request->nominal,
